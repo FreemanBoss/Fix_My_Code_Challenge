@@ -4,36 +4,37 @@
 import sys
 
 
-def fizzbuzz(n: int) -> None:
+def fizzbuzz(n):
     """
-    Prints numbers from 0 to n, inclusive, with some replaced with "Fizz", "Buzz",
-    or "FizzBuzz" according to the FizzBuzz problem.
+    FizzBuzz function prints numbers from 1 to n separated by a space.
 
-    Args:
-        n (int): The maximum number to print.
+    - For multiples of three print "Fizz" instead of the number and for
+      multiples of five print "Buzz".
+    - For numbers which are multiples of both three and five print "FizzBuzz".
     """
     if n < 1:
-        raise ValueError("n must be greater than or equal to 1")
+        return
 
-    output = []
-    for i in range(n + 1):
-        if i % 15 == 0:
-            output.append("FizzBuzz")
-        elif i % 3 == 0:
-            output.append("Fizz")
-        elif i % 5 == 0:
-            output.append("Buzz")
+    tmp_result = []
+    for i in range(1, n + 1):
+        if (i % 3) == 0 and (i % 5) == 0:
+            tmp_result.append("FizzBuzz")
+        elif (i % 3) == 0:
+            tmp_result.append("Fizz")
+        elif (i % 5) == 0:
+            tmp_result.append("Buzz")
         else:
-            output.append(str(i))
-    print(" ".join(output))
+            tmp_result.append(str(i))
+    print(" ".join(tmp_result))
 
 
 if __name__ == '__main__':
     if len(sys.argv) <= 1:
         print("Missing number")
-        print("Usage: ./fizzbuzz.py <number>")
-        print("Example: ./fizzbuzz.py 89")
+        print("Usage: ./0-fizzbuzz.py <number>")
+        print("Example: ./0-fizzbuzz.py 89")
         sys.exit(1)
+
     number = int(sys.argv[1])
     fizzbuzz(number)
     
